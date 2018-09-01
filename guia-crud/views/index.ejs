@@ -1,0 +1,44 @@
+<%- include layout/header.ejs%>
+
+  <div class="container">
+    
+        <h1><%= title %></h1>
+        <p>Welcome to <%= title %></p>
+        <a class="btn btn-primary" href="/agregarUsuario">Agregar Usuario</a>
+        <hr>
+      <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th style="width:20%;">Foto</th>
+            <th>Genero</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i < usuarios.length; i++){ %>
+            <tr>
+              <td><%= usuarios[i].nombre %></td>
+              <td><%= usuarios[i].apellidos %></td>
+              <td><img src="images/<%= usuarios[i].foto %>" height="20%" class="img-thumbnail" alt="" title="" /></td>
+              <td><%= usuarios[i].sexo %></td>
+              <td><a href="/modificarUsuario/<%= usuarios[i].id %>" class="btn btn-success">Modificar</a></td>
+              <td><a id="eliminar" class="btn btn-danger" href="/eliminarUsuario/<%= usuarios[i].id %>" class="btn btn-primary">Eliminar</a></td>
+            </tr>
+          <% }%>
+        </tbody>
+    
+      </table>
+  </div>
+  <!--Script validar eliminar-->
+  <script>
+    document.getElementById('eliminar').addEventListener('click',function(e){
+      let response = confirm('¿Desea eliminar este registro?');
+      if(!response){
+        e.preventDefault();
+      }
+    })
+  </script>
+<%- include layout/footer.ejs%>

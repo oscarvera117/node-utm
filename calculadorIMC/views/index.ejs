@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <h1><%= title %></h1>
+        <p>Welcome to <%= title %></p>
+        <% if(status) { %>
+          <div class="container">
+           <div class="alert alert-info" role="alert">
+            <%= message %>
+           </div>
+          </div>
+        <% }else {%>
+          <div class="container">
+              <div class="alert alert-danger" role="alert">
+               <%= message %>
+              </div>
+            </div>
+          <% }%>
+        <div class="row" >
+          <form method="POST" action="/">
+              <div class="col-sm-3">
+                  <label>Peso</label> 
+                  <input type="number" name="peso" id="peso" onkeypress="return SoloNumeros(event)" placeholder="Peso en KG.">
+              </div>
+              <div class="col-sm-3">
+                  <label>Altura</label> 
+                  <input type="number" name="altura" id="altura" onkeypress="return SoloNumeros(event)" placeholder="Altura en Mts.">
+              </div>
+              <div class="col-sm-3" style="margin-top: 2%">
+                  <button type="submit" class="btn btn-primary">
+                      Calcular IMC
+                  </button>
+              </div>
+          </form>
+      </div>
+    </div>
+    
+  </body>
+</html>
